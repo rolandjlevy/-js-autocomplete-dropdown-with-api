@@ -122,6 +122,5 @@ Object.keys(searchLinks).forEach(link => {
 
 function badWordExists(inputString) {
   const inputArray = inputString.split(' ');
-  const result = inputArray.some(item => badwords.includes(item));
-  return result;
+  return inputArray.some(item => badwords.includes(item));
 }
