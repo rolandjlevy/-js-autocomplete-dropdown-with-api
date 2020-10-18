@@ -5,25 +5,29 @@ const searchInput = getElement('#search-input');
 searchInput.focus();
 const autocomplete = getElement('#autocomplete');
 const baseUrl = 'https://api.datamuse.com';
-const max = 100;
+const max = 500;
 
-searchInput.addEventListener('keyup', (e) => {
-  const str = e.target.value.toLowerCase();
-  if (str) {
-    getWords(str).then(list => {
-      const sortedList = list.sort((a, b) => a.word.localeCompare(b.word));
-      const found = findMatch(sortedList, str);
-      if (found.length) {
-        autocomplete.innerHTML = found;
-        autocomplete.classList.remove('hide');
-        searchInput.classList.add('results');
-        bindClickEvents();
-      }
-    });
-  } else {
-    autocomplete.classList.add('hide');
-  }
-}, true);
+['keyup', 'click'].forEach(event => {
+  searchInput.addEventListener(event, (e) => {
+    const str = e.target.value.toLowerCase();
+    if (str) {
+      getWords(str).then(list => {
+        const sortedList = list.sort((a, b) => a.word.localeCompare(b.word));
+        const found = findMatch(sortedList, str);
+        if (found.length) {
+          autocomplete.innerHTML = found;
+          autocomplete.classList.remove('hide');
+          searchInput.classList.add('results');
+          bindClickEvents();
+        }
+      });
+    } else {
+      autocomplete.classList.add('hide');
+    }
+  }, true);
+});
+
+// close autocomplete
 
 html.addEventListener('click', (e) => {
   if (e.target.tagName !== 'LI') {
@@ -40,7 +44,7 @@ function bindClickEvents() {
       searchInput.focus();
       autocomplete.classList.add('hide');
       searchInput.classList.remove('results');
-    });
+    }, true);
   });
 }
 
@@ -68,6 +72,8 @@ function findMatch(arr, str) {
   }, '');
   return list.length ? `<ul>${list}</ul>` : false;
 }
+
+// Search links
 
 const searchLinks = {
   'google-search': 'https://www.google.com/search?q=',
