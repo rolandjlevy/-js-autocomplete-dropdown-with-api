@@ -97,6 +97,10 @@ body {
   transition: all 0.3s ease;
 }
 
+#menu {
+  height: fit-content;
+}
+
 #menu .list {
   width: fit-content;
   max-height: 0;
