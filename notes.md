@@ -7,3 +7,4 @@ See: https://www.taniarascia.com/javascript-mvc-todo-app
 - https://fontawesome.com
 - https://www.datamuse.com/api/ (use the /sug endpoint)
 - https://brandpalettes.com
+- https://stackoverflow.com/questions/37751375/instagram-new-logo-css-background
