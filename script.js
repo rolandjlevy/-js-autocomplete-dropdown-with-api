@@ -60,20 +60,19 @@ function findMatch(arr, str) {
   return list.length ? `<ul>${list}</ul>` : false;
 }
 
-getElement('#youtube-search').addEventListener('click', (e) => {
-  window.open(`https://www.youtube.com/results?search_query=${searchInput.value}`, '_blank');
+const searchLinks = {
+  'youtube-search': 'https://www.youtube.com/results?search_query=',
+  'google-search': 'https://www.google.com/search?q=',
+  'wiki-search': 'https://en.wikipedia.org/wiki/',
+  'twitter-search': 'https://twitter.com/'
+}
+
+Object.keys(searchLinks).forEach(link => {
+  getElement(`#${link}`).addEventListener('click', (e) => {  
+    if (searchInput.value) {
+      window.open(`${searchLinks[link]}${searchInput.value}`, '_blank');
+    } else {
+      
+    }
+  });
 });
-
-getElement('#google-search').addEventListener('click', (e) => {
-  window.open(`https://www.google.com/search?q=${searchInput.value}`, '_blank');
-});
-
-getElement('#wiki-search').addEventListener('click', (e) => {
-  window.open(`https://en.wikipedia.org/wiki/${searchInput.value}`, '_blank');
-});
-
-getElement('#twitter-search').addEventListener('click', (e) => {
-  window.open(`https://twitter.com/${searchInput.value}`, '_blank');
-});
-
-
