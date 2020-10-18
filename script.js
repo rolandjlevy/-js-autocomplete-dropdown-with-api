@@ -9,9 +9,10 @@ const max = 100;
 
 searchInput.addEventListener('keyup', (e) => {
   const str = e.target.value.toLowerCase();
-  if (str.length > 2) {
+  if (str) {
     getWords(str).then(list => {
-      const found = findMatch(list, str);
+      const sortedList = list.sort((a, b) => a.word.localeCompare(b.word));
+      const found = findMatch(sortedList, str);
       if (found.length) {
         autocomplete.innerHTML = found;
         autocomplete.classList.remove('hide');
