@@ -1,5 +1,6 @@
 import { createElement, getElement, getAllElements } from './src/helpers.js';
 
+const html = getElement('html');
 const searchInput = getElement('#search-input');
 searchInput.focus();
 const autocomplete = getElement('#autocomplete');
@@ -21,7 +22,14 @@ searchInput.addEventListener('keyup', (e) => {
   } else {
     autocomplete.classList.add('hide');
   }
-});
+}, true);
+
+html.addEventListener('click', (e) => {
+  if (e.target.tagName !== 'LI') {
+    autocomplete.classList.add('hide');
+  }
+}, true);
+
 
 function bindClickEvents() {
   const items = getAllElements('#autocomplete > ul > li');
@@ -61,10 +69,12 @@ function findMatch(arr, str) {
 }
 
 const searchLinks = {
-  'youtube-search': 'https://www.youtube.com/results?search_query=',
   'google-search': 'https://www.google.com/search?q=',
-  'wiki-search': 'https://en.wikipedia.org/wiki/',
-  'twitter-search': 'https://twitter.com/'
+  'youtube-search': 'https://www.youtube.com/results?search_query=',
+  'instagram-search': 'https://www.instagram.com/',
+  'twitter-search': 'https://twitter.com/',
+  'facebook-search': 'https://www.facebook.com/search/?q=',
+  'wiki-search': 'https://en.wikipedia.org/wiki/'
 }
 
 Object.keys(searchLinks).forEach(link => {
@@ -72,7 +82,7 @@ Object.keys(searchLinks).forEach(link => {
     if (searchInput.value) {
       window.open(`${searchLinks[link]}${searchInput.value}`, '_blank');
     } else {
-      
+      console.log('No search terms');
     }
   });
 });

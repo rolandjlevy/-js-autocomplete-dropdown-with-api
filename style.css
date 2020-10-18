@@ -4,7 +4,8 @@
   --lighter-grey: #f3f3f3;
   --item-padding: 6px 12px;
   --search-button-size: 50px;
-  --search-menu-height: calc(4 * var(--search-button-size));
+  --search-button-count: 6;
+  --search-menu-height: calc(var(--search-button-count) * var(--search-button-size));
   --body-padding: 30px;
   --search-input-width: calc(100vw - var(--search-button-size) - 2 * var(--body-padding));
 }
@@ -141,17 +142,18 @@ h2 {
 /* Layout */
 /*////////*/
 
-.v-align, h-align, .btn {
+.v-align, h-align, 
+.btn, .search-btn {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.v-align, .btn {
+.v-align, .btn, .search-btn {
   flex-direction: column;
 }
 
-.h-align, .btn {
+.h-align, .btn, .search-btn {
   flex-direction: row;
 }
 
@@ -180,3 +182,22 @@ h2 {
   color: #1da1f2;
 }
 
+.facebook-icon {
+  color: #4267b2;
+}
+
+.instagram-icon {
+
+  /* font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 1px; */
+  /* background: linear-gradient(0deg, #ffd900, #ff7300, #ff0080, #8400ff); */
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  background-size: 150%;
+}
