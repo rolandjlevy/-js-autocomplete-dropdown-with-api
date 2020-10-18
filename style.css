@@ -1,0 +1,164 @@
+:root {
+  --mid-grey: #aaa;
+  --light-grey: #ddd;
+  --item-padding: 6px 12px;
+}
+
+body {
+  margin: 30px;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+#search-input {
+  padding: var(--item-padding);
+  width: inherit;
+  border: 1px solid var(--mid-grey);
+  outline: none;
+}
+
+#search-input.results {
+  border-bottom: 1px solid var(--light-grey);
+}
+
+#autocomplete {
+  display: block;
+  margin: 0;
+  border: 1px solid var(--mid-grey);
+  border-top: none;
+  height: fit-content;
+  width: inherit;
+}
+
+#autocomplete.hide{
+  display: none;
+  height: 0;
+}
+
+#autocomplete, #search-input {
+  line-height: 1.5;
+}
+
+#autocomplete > ul {
+  margin: 0;
+  padding: 0;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+#autocomplete > ul > li:not(:last-child) {
+  border-bottom: 1px solid var(--light-grey);
+} 
+
+#autocomplete > ul > li {
+  padding: 4px 8px;
+  cursor: pointer;
+  list-style: none;
+} 
+
+#autocomplete > ul > li:hover,
+#autocomplete > ul > li:focus {
+  background-color: #f0f0f0;
+}
+
+/*///////////////*/
+/* Dropdown menu */
+/*///////////////*/
+
+#menu .search-btn {
+  display: inline-block;
+  background: #f0f0f0;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid var(--mid-grey);
+  transition: all 0.25s ease;
+}
+
+#menu .search-btn:hover {
+  background: #333;
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+#menu .list {
+  width: fit-content;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  background: #eee;
+  padding: 0;
+  margin: 0;
+  transition: all 0.25s ease-out;
+}
+
+#menu:hover .list {
+  max-height: fit-content;
+  opacity: 1;
+  transition: all 0.25s ease;
+}
+
+#menu .list li {
+  margin: 0;
+}
+
+.btn {
+  padding: 4px 8px;
+  line-height: 1.5;
+  border: none;
+  cursor: pointer;
+  width: inherit;
+  /* min-width: 40px;
+  min-height: 40px; */
+}
+
+.btn:hover {
+  background-color: #e0e0e0;
+}
+
+
+/*////////*/
+/* Layout */
+/*////////*/
+
+.v-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.row {
+  display: flex;
+  width: fit-content;
+}
+
+.column-left {
+  width: 15rem;
+}
+
+.column-right {
+  flex: 1;
+}
+
+.youtube-icon {
+  color: #ff0000;
+}
+
+.google-icon {
+  color: #4285f4;
+}
+
+.twitter-icon {
+  color: #1da1f2;
+}
+
