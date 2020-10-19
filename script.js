@@ -105,7 +105,8 @@ const searchLinks = {
   'google-icon': 'https://www.google.com/search?q=',
   'youtube-icon': 'https://www.youtube.com/results?search_query=',
   'instagram-icon': 'https://www.instagram.com/',
-  'twitter-icon': 'https://twitter.com/',
+  'twitter-icon': 'https://twitter.com/search?q=',
+  'soundcloud-icon': 'https://soundcloud.com/search?q=',
   'facebook-icon': 'https://www.facebook.com/search/?q=',
   'wiki-icon': 'https://en.wikipedia.org/wiki/'
 }

@@ -5,7 +5,7 @@
   --alert-color: red;
   --item-padding: 6px 12px;
   --search-button-size: 50px;
-  --search-button-count: 6;
+  --search-button-count: 7;
   --search-menu-height: calc(var(--search-button-count) * var(--search-button-size));
   --body-padding: 30px;
   --max-width: 640px;
@@ -75,6 +75,7 @@ h2 {
 } 
 
 #autocomplete > ul > li {
+  background-color: #fff;
   padding: var(--item-padding);
   cursor: pointer;
   list-style: none;
@@ -153,6 +154,39 @@ h2 {
   background-color: var(--lighter-grey);
 }
 
+/**********/
+/* Footer */
+/**********/
+
+footer {
+  position: fixed;
+  bottom: 0;
+}
+
+footer * {
+  font-size: 0.875rem;
+  color: #999;
+  text-align: center;
+}
+
+footer a {
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+footer a:hover {
+  color: black;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.new-tab-icon::after {
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+  content: "\f35d";
+  margin-left: 5px;
+}
+
 /*////////*/
 /* Layout */
 /*////////*/
@@ -175,6 +209,7 @@ h2 {
 .row {
   display: flex;
   width: fit-content;
+  z-index: 5;
 }
 
 .column-left {
@@ -183,6 +218,10 @@ h2 {
 
 .column-right {
   flex: 1;
+}
+
+.p-30 {
+  padding: 30px;
 }
 
 /*///////*/
@@ -211,6 +250,10 @@ h2 {
 
 .twitter-icon > i {
   color: #1da1f2;
+}
+
+.soundcloud-icon > i {
+  color: #fe5000;
 }
 
 .facebook-icon > i {
