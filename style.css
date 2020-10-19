@@ -79,11 +79,13 @@ h2 {
   padding: var(--item-padding);
   cursor: pointer;
   list-style: none;
+  transition: all 0.15s ease;
 } 
 
 #autocomplete > ul > li:hover,
 #autocomplete > ul > li:focus {
   background-color: var(--lighter-grey);
+  transition: all 0.15s ease;
 }
 
 /*///////////////*/
@@ -126,7 +128,7 @@ h2 {
   overflow: hidden;
   padding: 0;
   margin: 0;
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #menu .list.hide {
@@ -136,22 +138,25 @@ h2 {
 #menu:hover .list {
   max-height: var(--search-menu-height);
   opacity: 1;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 #menu .list li.btn {
   margin: 0;
   line-height: 1.5;
   cursor: pointer;
+  background-color: #fff;
   width: var(--search-button-size);
   height: var(--search-button-size);
   border: 1px solid var(--mid-grey);
   border-top: none;
   overflow: hidden;
+  transition: all 0.15s ease;
 }
 
 #menu .list li.btn:hover {
   background-color: var(--lighter-grey);
+  transition: all 0.15s ease;
 }
 
 /**********/
@@ -232,20 +237,40 @@ footer a:hover {
   padding-left: 2px;
 }
 
-.google-icon > i {
-  color: #4285f4;
+.google-icon:before {
+  display: block;
+  content: ' ';
+  background-image: url('./images/google-logo.svg');
+  background-size: 26px 26px;
+  height: 26px;
+  width: 26px;
 }
 
-.youtube-icon > i {
-  color: #ff0000;
+.instagram-icon:before {
+  display: block;
+  content: ' ';
+  background-image: url('./images/instagram-logo.svg');
+  background-size: 28px 28px;
+  height: 28px;
+  width: 28px;
 }
 
+/*
 .instagram-icon > i {
   background: radial-gradient(circle at 30% 107%, #ffdc80 0%, #fcaf45 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 1.4rem;
+}
+*/
+
+.youtube-icon > i {
+  color: #ff0000;
+}
+
+.twitch-icon > i {
+  color: #6441a4;
 }
 
 .twitter-icon > i {
