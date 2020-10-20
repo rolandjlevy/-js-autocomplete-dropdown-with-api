@@ -1,7 +1,7 @@
 :root {
   --mid-grey: #aaa;
   --light-grey: #ddd;
-  --lighter-grey: #f3f3f3;
+  --lighter-grey: #f0f0f0;
   --alert-color: red;
   --item-padding: 6px 12px;
   --search-button-size: 50px;
@@ -14,7 +14,8 @@
 
 body {
   margin: var(--body-padding);
-  background: linear-gradient(7deg, #ffd521, #f50000 40%, #b900b4);
+  /* background: linear-gradient(7deg, #ffd521, #f50000 40%, #b900b4); */
+  background: linear-gradient(7deg, #ffe030, #4fc500 40%, #001a8f);
   height: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -33,6 +34,10 @@ h2 {
   color: #fff;
 }
 
+h2 > i {
+  color: #000e4b;
+  font-size: 1.8rem;
+}
 #search-input {
   padding: var(--item-padding);
   width: inherit;
@@ -103,7 +108,7 @@ h2 {
 
 #menu .search-btn {
   display: inline-block;
-  background: none;
+  background: #001a8f;
   color: #fff;
   cursor: pointer;
   padding: 10px;
@@ -316,24 +321,24 @@ footer a:hover {
 /*//////////////////*/
 
 #autocomplete > ul {
-  scrollbar-color: #999 #e9e9e9 !important;
-  scrollbar-width: 16px !important;
+  scrollbar-color: #888 #e0e0e0 !important;
+  scrollbar-width: 18px !important;
 }
 
 #autocomplete > ul::-webkit-scrollbar {
-  width: 16px;
+  width: 18px;
 }
 
 #autocomplete > ul::-webkit-scrollbar-track {
-  background: #e9e9e9;
+  background: #e0e0e0;
 }
 
 #autocomplete > ul::-webkit-scrollbar-thumb {
-  background: #999;
-  border: 3px solid #e9e9e9;
+  background: #888;
+  border: 3px solid #e0e0e0;
   min-height: 40px;
 }
 
 #autocomplete > ul::-webkit-scrollbar-thumb:hover {
-  background: #666;
+  background: #555;
 }
