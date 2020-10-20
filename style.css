@@ -14,6 +14,10 @@
 
 body {
   margin: var(--body-padding);
+  background: linear-gradient(7deg, #ffd521, #f50000 40%, #b900b4);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 * {
@@ -26,6 +30,7 @@ h2 {
   font-size: 1.75rem;
   text-align: center;
   transition: all 0.3s ease;
+  color: #fff;
 }
 
 #search-input {
@@ -98,7 +103,7 @@ h2 {
 
 #menu .search-btn {
   display: inline-block;
-  background: #333;
+  background: none;
   color: #fff;
   cursor: pointer;
   padding: 10px;
@@ -112,9 +117,9 @@ h2 {
 
 #menu:hover .search-btn,
 #menu .search-btn.hide {
-  color: black;
+  color: #999;
   border-left: 1px solid transparent;
-  background: none;
+  background: #fff;
 }
 
 #menu .search-btn.hide {
@@ -170,7 +175,7 @@ footer {
 
 footer * {
   font-size: 0.875rem;
-  color: #999;
+  color: #333;
   text-align: center;
 }
 
