@@ -1,4 +1,4 @@
-import { createElement, getElement, getAllElements } from './src/helpers.js';
+import { createElement, getElement, getAllElements, sanitize, isTag } from './src/helpers.js';
 import { badwords } from './src/badwords.js';
 
 const html = getElement('html');
@@ -18,13 +18,13 @@ const max = 500;
       searchButton.classList.remove('hide');
       menuList.classList.remove('hide');
       searchInput.classList.remove('badword');
-      if (badWordExists(str)) {
-        badwordsInput();
+      if (badWordExists(str) || isTag(str)) {
+        invalidInput();
       }
       getWords(str).then(list => {
         const sortedList = list.sort((a, b) => a.word.localeCompare(b.word));
         const found = findMatch(sortedList, str);
-        if (found.length && !badWordExists(str)) {
+        if (found.length && !badWordExists(str) && !isTag(str)) {
           autocomplete.innerHTML = found;
           autocomplete.classList.remove('hide');
           searchInput.classList.add('results');
@@ -44,7 +44,7 @@ function emptyInput() {
   menuList.classList.add('hide');
 }
 
-function badwordsInput() {
+function invalidInput() {
   autocomplete.classList.add('hide');
   searchInput.classList.add('badword');
   searchInput.classList.remove('results');

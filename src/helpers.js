@@ -13,8 +13,27 @@ const getAllElements = function(selector) {
   return document.querySelectorAll(selector);
 }
 
+function sanitize(string) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    "/": '&#x2F;',
+  };
+  const reg = /[&<>"'/]/ig;
+  return string.replace(reg, (match) => (map[match]));
+}
+
+function isTag(str) {
+  return /<[^>]*>/g.test(str);
+}
+
 export {
   createElement,
   getElement,
-  getAllElements
+  getAllElements,
+  sanitize,
+  isTag
 };
