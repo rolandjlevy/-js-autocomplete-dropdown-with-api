@@ -1,10 +1,11 @@
-# All-in-one Search
+# All-in-one Search 🔍
 
-A verstile search tool that allows you to explore words or phrases in multiple channels.
+A verstile search utility which makes exploring words or phrases in multiple channels quick and easy.
 
-- mobile-friendly and fully responsive
-- uses [datamuse.com API](https://www.datamuse.com/api) for autocomplete 
-- includes badwords detection
+### Features 💡
+- Mobile-friendly and fully responsive
+- Uses [datamuse.com API](https://www.datamuse.com/api) for autocomplete 
+- Includes badwords detection
 
 ### Links 🔗
 - [See the live demo](https://js-autocomplete-dropdown-with-api.rjlevy.repl.co/)
