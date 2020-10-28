@@ -1,14 +1,17 @@
-import { createElement, getElement, getAllElements, sanitize, isTag } from './src/helpers.js';
-import { badwords } from './src/badwords.js';
+import { createElement, $, $$, isTag } from './src/utils.js';
+import { badWordExists } from './src/badwords.js';
+import { bindSearchEvents } from './src/searchLinks.js';
 
-const html = getElement('html');
-const searchInput = getElement('#search-input');
-const searchButton = getElement('#menu > .search-btn');
-searchInput.focus();
-const autocomplete = getElement('#autocomplete');
-const menuList = getElement('#menu > ul.list');
+const html = $('html');
+const searchInput = $('#search-input');
+const searchButton = $('#menu > .search-btn');
+const autocomplete = $('#autocomplete');
+const menuList = $('#menu > ul.list');
 const baseUrl = 'https://api.datamuse.com';
 const max = 500;
+
+searchInput.focus();
+bindSearchEvents($, searchInput);
 
 // Events to generate dropdown
 ['keyup', 'click'].forEach(event => {
@@ -62,7 +65,7 @@ html.addEventListener('click', (e) => {
 
 // Events to fill input from dropdown
 function bindClickEvents() {
-  const items = getAllElements('#autocomplete > ul > li');
+  const items = $$('#autocomplete > ul > li');
   items.forEach(item => {
     item.addEventListener('click', (e) => {
       searchInput.value = e.target.textContent;
@@ -98,31 +101,4 @@ function findMatch(arr, str) {
     return acc;
   }, '');
   return list.length ? `<ul>${list}</ul>` : false;
-}
-
-// Search links data
-const searchLinks = {
-  'google-icon': 'https://www.google.com/search?q=',
-  'youtube-icon': 'https://www.youtube.com/results?search_query=',
-  'twitch-icon': 'https://www.twitch.tv/search?term=',
-  'instagram-icon': 'https://www.instagram.com/',
-  'twitter-icon': 'https://twitter.com/',
-  'soundcloud-icon': 'https://soundcloud.com/search?q=',
-  'facebook-icon': 'https://www.facebook.com/search/?q=',
-  'wiki-icon': 'https://en.wikipedia.org/wiki/'
-}
-
-Object.keys(searchLinks).forEach(link => {
-  getElement(`.${link}`).addEventListener('click', (e) => {  
-    if (searchInput.value) {
-      window.open(`${searchLinks[link]}${searchInput.value}`, '_blank');
-    } else {
-      console.log('No search terms');
-    }
-  });
-});
-
-function badWordExists(inputString) {
-  const inputArray = inputString.split(' ');
-  return inputArray.some(item => badwords.includes(item));
 }

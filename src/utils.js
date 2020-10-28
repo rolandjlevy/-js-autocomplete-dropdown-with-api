@@ -1,4 +1,3 @@
-
 const createElement = function(tag, className) {
   const element = document.createElement(tag);
   if (className) element.classList.add(className);
@@ -12,6 +11,9 @@ const getElement = function(selector) {
 const getAllElements = function(selector) {
   return document.querySelectorAll(selector);
 }
+
+const $ = selector => document.querySelector(selector);
+const $$ = selector => document.querySelectorAll(selector);
 
 function sanitize(string) {
   const map = {
@@ -32,8 +34,7 @@ function isTag(str) {
 
 export {
   createElement,
-  getElement,
-  getAllElements,
-  sanitize,
+  $,
+  $$,
   isTag
 };
