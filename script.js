@@ -1,4 +1,4 @@
-import { createElement, $, $$, isTag } from './src/utils.js';
+import { $, $$, isTag } from './src/utils.js';
 import { badWordExists } from './src/badwords.js';
 import { bindSearchEvents } from './src/searchLinks.js';
 

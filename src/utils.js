@@ -33,7 +33,6 @@ function isTag(str) {
 }
 
 export {
-  createElement,
   $,
   $$,
   isTag
