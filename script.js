@@ -13,7 +13,7 @@ const max = 500;
 searchInput.focus();
 bindSearchEvents($, searchInput);
 
-// Events to generate dropdown
+// Generate dropdown list
 ['keyup', 'click'].forEach(event => {
   searchInput.addEventListener(event, (e) => {
     const str = e.target.value.toLowerCase();
@@ -21,9 +21,7 @@ bindSearchEvents($, searchInput);
       searchButton.classList.remove('hide');
       menuList.classList.remove('hide');
       searchInput.classList.remove('badword');
-      if (badWordExists(str) || isTag(str)) {
-        invalidInput();
-      }
+      if (badWordExists(str) || isTag(str)) invalidInput();
       getWords(str).then(list => {
         const sortedList = list.sort((a, b) => a.word.localeCompare(b.word));
         const found = findMatch(sortedList, str);
@@ -40,22 +38,7 @@ bindSearchEvents($, searchInput);
   }, true);
 });
 
-function emptyInput() {
-  autocomplete.classList.add('hide');
-  searchInput.classList.remove('results');
-  searchButton.classList.add('hide');
-  menuList.classList.add('hide');
-}
-
-function invalidInput() {
-  autocomplete.classList.add('hide');
-  searchInput.classList.add('badword');
-  searchInput.classList.remove('results');
-  searchButton.classList.add('hide');
-  menuList.classList.add('hide');
-}
-
-// Event to close dropdown
+// Event to close dropdown with outside click 
 html.addEventListener('click', (e) => {
   if (e.target.tagName !== 'LI') {
     autocomplete.classList.add('hide');
@@ -82,12 +65,12 @@ function getWords(str) {
     const url = `${baseUrl}/sug?s=${str}&max=${max}`;
     return fetch(url).then(response => {
       if (response.ok) {
-        resolve(response.json())
+        resolve(response.json());
       } else {
         reject(new Error('error'));
       }
     }, error => {
-      reject(new Error(error.message))
+      reject(new Error(error.message));
     });
   });
 }
@@ -101,4 +84,19 @@ function findMatch(arr, str) {
     return acc;
   }, '');
   return list.length ? `<ul>${list}</ul>` : false;
+}
+
+function emptyInput() {
+  autocomplete.classList.add('hide');
+  searchInput.classList.remove('results');
+  searchButton.classList.add('hide');
+  menuList.classList.add('hide');
+}
+
+function invalidInput() {
+  autocomplete.classList.add('hide');
+  searchInput.classList.add('badword');
+  searchInput.classList.remove('results');
+  searchButton.classList.add('hide');
+  menuList.classList.add('hide');
 }
