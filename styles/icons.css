@@ -9,7 +9,7 @@
 .google-icon:before {
   display: block;
   content: ' ';
-  background-image: url('./images/google-logo.svg');
+  background-image: url('../images/google-logo.svg');
   background-size: 26px 26px;
   height: 26px;
   width: 26px;
@@ -18,7 +18,7 @@
 .instagram-icon:before {
   display: block;
   content: ' ';
-  background-image: url('./images/instagram-logo.svg');
+  background-image: url('../images/instagram-logo.svg');
   background-size: 28px 28px;
   height: 28px;
   width: 28px;

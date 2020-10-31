@@ -14,7 +14,6 @@
 
 body {
   margin: var(--body-padding);
-  /* background: linear-gradient(7deg, #ffd521, #f50000 40%, #b900b4); */
   background: linear-gradient(7deg, #ffe030, #00c583 40%, #002e83);
   height: 100%;
   background-repeat: no-repeat;
@@ -71,43 +70,6 @@ footer a:hover {
   font-weight: 900; 
   content: "\f35d";
   margin-left: 5px;
-}
-
-/*////////*/
-/* Layout */
-/*////////*/
-
-.v-align, h-align, 
-.btn, .search-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.v-align, .btn, .search-btn {
-  flex-direction: column;
-}
-
-.h-align, .btn, .search-btn {
-  flex-direction: row;
-}
-
-.row {
-  display: flex;
-  width: fit-content;
-  z-index: 5;
-}
-
-.column-left {
-  width: var(--search-input-width);
-}
-
-.column-right {
-  flex: 1;
-}
-
-.p-30 {
-  padding: 30px;
 }
 
 /*///////////////*/
