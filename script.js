@@ -10,6 +10,8 @@ const menuList = $('#menu > ul.list');
 const baseUrl = 'https://api.datamuse.com';
 const max = 500;
 
+$('#year').textContent = new Date().getFullYear();
+
 searchInput.focus();
 bindSearchEvents($, searchInput);
 
