@@ -1,21 +1,21 @@
-const createElement = function(tag, className) {
+const createElement = (tag, className) => {
   const element = document.createElement(tag);
   if (className) element.classList.add(className);
   return element;
 }
 
-const getElement = function(selector) {
+const getElement = (selector) => {
   return document.querySelector(selector);
 }
 
-const getAllElements = function(selector) {
+const getAllElements = (selector) => {
   return document.querySelectorAll(selector);
 }
 
 const $ = selector => document.querySelector(selector);
 const $$ = selector => document.querySelectorAll(selector);
 
-function sanitize(string) {
+const sanitize = (str) => {
   const map = {
     '&': '&amp;',
     '<': '&lt;',
@@ -25,15 +25,22 @@ function sanitize(string) {
     "/": '&#x2F;',
   };
   const reg = /[&<>"'/]/ig;
-  return string.replace(reg, (match) => (map[match]));
+  return str.replace(reg, (match) => (map[match]));
 }
 
-function isTag(str) {
+const isTag = (str) => {
   return /<[^>]*>/g.test(str);
 }
+
+let timeout;
+const debounce = (func, delay) => {
+  clearTimeout(timeout);
+  timeout = setTimeout(func, delay);
+};
 
 export {
   $,
   $$,
-  isTag
+  isTag,
+  debounce
 };

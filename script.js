@@ -1,4 +1,4 @@
-import { $, $$, isTag } from './src/utils.js';
+import { $, $$, isTag, debounce } from './src/utils.js';
 import { badWordExists } from './src/badwords.js';
 import { bindSearchEvents } from './src/searchLinks.js';
 
@@ -9,34 +9,35 @@ const autocomplete = $('#autocomplete');
 const menuList = $('#menu > ul.list');
 const baseUrl = 'https://api.datamuse.com';
 const max = 500;
+let str;
 
 $('#year').textContent = new Date().getFullYear();
 
 searchInput.focus();
 bindSearchEvents($, searchInput);
 
+const search = () => {
+  searchButton.classList.remove('hide');
+  menuList.classList.remove('hide');
+  searchInput.classList.remove('badword');
+  if (badWordExists(str) || isTag(str)) invalidInput();
+  getWords(str).then(list => {
+    const sortedList = list.sort((a, b) => a.word.localeCompare(b.word));
+    const found = findMatch(sortedList, str);
+    if (found.length && !badWordExists(str) && !isTag(str)) {
+      autocomplete.innerHTML = found;
+      autocomplete.classList.remove('hide');
+      searchInput.classList.add('results');
+      bindClickEvents();
+    }
+  });
+}
+
 // Generate dropdown list
 ['keyup', 'click'].forEach(event => {
   searchInput.addEventListener(event, (e) => {
-    const str = e.target.value.toLowerCase();
-    if (str) {
-      searchButton.classList.remove('hide');
-      menuList.classList.remove('hide');
-      searchInput.classList.remove('badword');
-      if (badWordExists(str) || isTag(str)) invalidInput();
-      getWords(str).then(list => {
-        const sortedList = list.sort((a, b) => a.word.localeCompare(b.word));
-        const found = findMatch(sortedList, str);
-        if (found.length && !badWordExists(str) && !isTag(str)) {
-          autocomplete.innerHTML = found;
-          autocomplete.classList.remove('hide');
-          searchInput.classList.add('results');
-          bindClickEvents();
-        }
-      });
-    } else {
-      emptyInput();
-    }
+    str = e.target.value.toLowerCase();
+    str ? debounce(search, 300) : emptyInput();
   }, true);
 });
 
