@@ -11,12 +11,17 @@
         "terminal.integrated.defaultProfile.linux": "bash",
         "workbench.colorTheme": "Default Dark+",
         "files.autoSave": "onFocusChange",
-        "editor.formatOnSave": true
-      }
-    },
-    "features": {
-      "ghcr.io/devcontainers-contrib/features/live-server:1": {}
-    },
-    "postCreateCommand": "echo 'Environment ready!'"
+        "editor.formatOnSave": true,
+        "files.watcherExclude": {
+          "**/.git/objects/**": true,
+          "**/.git/subtree-cache/**": true,
+          "**/node_modules/**": true
+        }
+      },
+      "features": {
+        "ghcr.io/devcontainers-contrib/features/live-server:1": {}
+      },
+      "postCreateCommand": "echo 'Environment ready!'"
+    }
   }
 }
