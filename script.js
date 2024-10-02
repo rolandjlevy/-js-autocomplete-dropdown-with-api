@@ -103,3 +103,11 @@ function invalidInput() {
   searchButton.classList.add('hide');
   menuList.classList.add('hide');
 }
+
+(async () => {
+  const res = await fetch(
+    'https://node-express-api-mongodb.vercel.app/api/sliders?page=5'
+  );
+  const data = await res.json();
+  console.log('data from silders scores:', data);
+})();
